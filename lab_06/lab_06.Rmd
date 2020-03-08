@@ -442,7 +442,7 @@ ggplot(maryland_2012) +
 
 **Task**: In the tutorial above, you followed the steps to create the graphic with the title: 
 "In Baltimore City, opioids fall in 2007, then climb steadily through 2012".  Create the same graphic, but instead of showing Baltimore City, show Mingo County, West Virginia.  You should adjust the title to reflect what the data shows. You'll need to created a subset of the arcos_county_pills_per_year to do this. 
-# Professor Sean, I have trouble to run some lines, so I cannnot find which counties are relative to population in 2012. 
+ 
 ```{r}
 mingo_pills_per_year <- arcos_county_pills_per_year %>%
   filter(buyer_state == "WV", buyer_county == "MINGO") %>%
@@ -458,7 +458,7 @@ ggplot(mingo_pills_per_year) +
 
 **Task**: In the tutorial above, you followed the steps to create the graphic with the title: 
 "Baltimore County, Baltimore City, Anne Arundel County had high number of opioids relative to population in 2012".  Create the same graphic, but instead of showing Maryland counties, show West Virginia counties. Adjust the title to reflect what the data shows.   You'll need to created a subset of the arcos_county_pills_per_year to do this, as well as pull in WV 2012 population data from the ARCOS api. 
- 
+# Professor Sean, I have trouble to run some lines, so I cannnot find which counties are relative to population in 2012. 
 ```{r}
  
 west_virginia_pills_2012 <- arcos_county_pills_per_year %>%
