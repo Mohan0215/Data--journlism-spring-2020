@@ -79,6 +79,9 @@ We're also going to load one new package: [corrr](https://github.com/tidymodels/
 library(tidyverse)
 library(janitor)
 library(arcos)
+install.packages("tidycensus")
+library(tidycensus)
+
 library(scales)
 
 install.packages("corrr")
@@ -290,7 +293,6 @@ census_api_key("549950d36c22ff16455fe196bbbd01d63cfbe6cf")
 county_median_household_income <- get_acs(geography = "county", 
               variables="B19013_001", year=2012, geometry = FALSE)
 ```
-
 Then, join it to our pills_population table.  We're going to do a little cleaning here, renaming the "estimate" column that comes in from Tidycensus as median_household_income, to make it more readable. We're also going to filter out the handful of counties that didn't have median_household_income data.   
 
 ```{r}
@@ -314,9 +316,10 @@ pills_population_income %>%
  summarise(median_household_income = mean(median_household_income),
             average_pills_per_person = mean(average_pills_per_person))  
 
-
 ```
-
+```{r}
+#the lower median_household_income, the higher average_pills_per_person
+```
 ```{r}
 # Make a scatterplot with median household income on one axis, average pills per person on the other.  Each dot is a county. 
 ggplot(pills_population_income) +
@@ -325,9 +328,11 @@ ggplot(pills_population_income) +
   scale_y_continuous(labels = comma) +
   scale_x_continuous(labels = comma)  +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(x="Average Annual Pills Per Person", y="median_household_income", title="", caption = "Source: DEA ARCOS database, via Washington Post")
+  labs(x="Average Annual Pills Per Person", y="Median_Household_Income", title="", caption = "Source: DEA ARCOS database, via Washington Post")
 ```
-
+```{r}
+#this is a negative relationship and approves that higher median_household_income, the lower average one
+```
 
 ```{r}
 
@@ -344,7 +349,6 @@ correlation_pills_income <- pills_population_income %>%
  
 
 ```
-
 
 ## Submission
 
